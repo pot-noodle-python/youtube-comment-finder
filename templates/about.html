@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='info.css')}}">
+{% endblock %}
+{% block content %}
+<div class="about-section">
+    <h1><b>About This Website</b></h1>
+    <p>I made this website as a weekend project</p>
+    <p>Below I'll explain how this works and other information</p>
+</div>
+<div class="margin">
+    <div class="text_container">
+        <h3><b>How Does This Work</b></h3>
+        <p><br>This web app works using the YouTube API, which allows developers to create applications that work directly with YouTube. The Youtube API has a system that restricts the amount of times the API can
+        be called per day. This website has 10,000 points of allowance per day. Optimizations and limitations have been made to manage these points so this app does not get overloaded, although it may still happen. This website
+        is designed with html and css and works with a python backend to control the api and navigation of the website. The code is open source on github.<br><br></p>
+        <h3><b>Errors</b></h3>
+        <p><br>There are a few situations where this app could return an error. Make sure that you include a valid URL. If there are no comments containing a specific search term an error will be shown. An error may also be shown if the app has ran out of quota. I'm currently working on improving the error system to make it more user friendly<br><br></p>
+        <h3><b>Limitations</b></h3>
+        <p><br>As explained before, there have been a few limitations put in place in order to stop abuse of the app. Firstly, you are limited to a max of 300 results per search, although a lower number will result in a massive boost in speed. Searching for comments by author may be a little slow as the author feature is still in beta. In the future, depending on the traffic of the app, a limitation per user may be put in place in order to keep the app permanently active<br><br></p>
+        <h3><b>GitHub</b></h3>
+        <p><br>All of the code for this project is on my GitHub, feel free to contribute or open an issue over on GitHub if you want. You can also contact me for any enquiries. Thanks.</p>
+    </div>
+</div>
+{% endblock %}

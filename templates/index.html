@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Youtube Comment Finder{% endblock %}
+{%block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css')}}">
+{% endblock %}
+{% block content %}
+<form action="#" method="post">
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Youtube Video URL</label>
+        <input type="url" name="url" class="form-control bg-custom" id="exampleFormControlInput1" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Search Term</label>
+        <input type="text" name="term" class="form-control bg-custom" id="exampleFormControlInput1" placeholder="Example Search Term" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Max Results - Lower = A Lot Faster</label>
+        <input type="number" name="maxresults" class="form-control bg-custom" id="exampleFormControlInput1" placeholder="Example Number" min="1" max="300" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Search By</label>
+        <select name="condition" class="form-control bg-custom" id="exampleFormControlSelect1" required>
+          <option>Full Comment Text</option>
+          <option>Partial Comment Text</option>
+        </select>
+    </div>
+    <button type="submit" value="submit" class="btn bg-custom">Search</button>
+</form>
+{% endblock %}

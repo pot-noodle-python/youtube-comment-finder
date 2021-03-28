@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{%block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='finished.css')}}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock %}
+{% block content %}
+<div id="results">
+    {% for result in results %}
+            <div class="w3-panel w3-card w3-dark" id="card">
+                <a href='{{ result["url"]}}'>
+                    <div id="container">
+                        <img src='{{ result["pfp"] }}'>
+                        <br>
+                        <p id="likes"><i class="bi bi-hand-thumbs-up"></i> {{ result["likes"] }}</p>
+                        <p id="comment"> {{ result["text"] }}<br><br>by <b>{{ result["author"] }}</b></p>
+                    </div>
+                </a>
+            </div>
+    {% endfor %}
+</div>
+{% endblock %}

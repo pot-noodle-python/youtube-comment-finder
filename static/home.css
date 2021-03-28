@@ -1,0 +1,34 @@
+form {
+    margin-top: 1% !important;
+    margin-left: 1% !important;
+}
+
+input, select {
+    width: 20% !important;
+    transition: width 0.4s ease-in-out !important;
+}
+
+textarea:focus, input:focus, select:focus {
+    color: white !important;
+    width: 50% !important;
+}
+
+button {
+    color: white !important;
+}
+
+button:hover {
+    background-color: #383a3f !important;
+}
+
+@media only screen and (max-width: 600px) {
+    input, select {
+        width: 70% !important;
+        transition: width 0.4s ease-in-out !important;
+    }
+    
+    textarea:focus, input:focus, select:focus {
+        color: white !important;
+        width: 90% !important;
+    }
+}

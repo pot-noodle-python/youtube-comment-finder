@@ -1,0 +1,29 @@
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #383a3f;
+    border-bottom: 1px solid black;    
+}
+
+.margin {
+    margin-top: 2%;
+}
+
+.text_container {
+    margin: 0 auto 0 auto;
+    width: 43%;
+    text-align: justify;
+    text-align-last: center;
+    line-height: 1.7;
+}
+
+@media only screen and (max-width: 600px) {
+    .text_container {
+        margin: 0 auto 0 auto;
+        width: 80%;
+        text-align: justify;
+        text-align-last: center;
+        line-height: 1.7;
+    }
+}
+  
