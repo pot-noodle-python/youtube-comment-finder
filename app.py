@@ -27,11 +27,11 @@ def home():
         condition = request.form["condition"]
         maxresults = request.form["maxresults"]
 
-        comments = f.find(url, term, condition, maxresults)
+        comments, total = f.find(url, term, condition, maxresults)
         if not comments:
             return render_template("error.html")
         else:
-            return render_template("results.html", results=comments)
+            return render_template("results.html", results=comments, total=total)
     else:
         return render_template("index.html")
 

@@ -17,7 +17,7 @@
     line-height: 1.7;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1050px) {
     .text_container {
         margin: 0 auto 0 auto;
         width: 80%;
