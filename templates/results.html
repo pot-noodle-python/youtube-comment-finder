@@ -7,6 +7,18 @@
 {% block content %}
 <div id="results">
     <h1 id="total">Showing <b>{{ results |length }}</b> of <b>{{ total }}</b> comments</h1>
+    <form action="#" method="post">
+        <div class="form-group">
+            <select name="filter" class="form-control bg-custom" id="exampleFormControlSelect1" onchange="this.form.submit()">
+                <option {% if filter_value == "Latest" %} selected {% endif %}>Latest</option>
+                <option {% if filter_value == "Most Likes" %} selected {% endif %}>Most Likes</option> 
+                <option {% if filter_value == "Least Likes" %} selected {% endif %}>Least Likes</option>
+                <option {% if filter_value == "Longest Comment" %} selected {% endif %}>Longest Comment</option>
+                <option {% if filter_value == "Shortest Comment" %} selected {% endif %}>Shortest Comment</option>
+                <option {% if filter_value == "Alphabetical Order" %} selected {% endif %}>Alphabetical Order</option>
+            </select>
+        </div>
+    </form>
     {% for result in results %}
             <div class="w3-panel w3-card w3-dark" id="card">
                 <a href='{{ result["url"]}}'>

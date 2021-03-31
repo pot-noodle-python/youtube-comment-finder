@@ -4,7 +4,7 @@ from finder import Finder
 from flask import Flask, render_template, url_for, request, redirect, session
 
 app = Flask(__name__)
-app.secret_key = "37825789567878456784867878680"
+app.secret_key = "hello"
 f = Finder()
 
 @app.context_processor

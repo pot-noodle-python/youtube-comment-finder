@@ -17,7 +17,8 @@ class Finder:
         self.youtube = googleapiclient.discovery.build(
             api_service_name, api_version, developerKey=DEVELOPER_KEY)
 
-    def find(self, url, term, condition, maxresults):
+    def find(self, url, term, condition, maxresults, filter_comments):
+        self.filter_comments = filter_comments
         valid_comments = []
         first = True
         ID = self.video_id(url)
@@ -44,7 +45,7 @@ class Finder:
                         print(f"searching {term}")
                     except Exception as e:
                         print(e)
-                        return valid_comments, total_comments
+                        return self.return_comments(valid_comments, total_comments)
                 else:
                     try:
                         request = self.youtube.commentThreads().list(part="snippet,id", maxResults=100,
@@ -53,7 +54,7 @@ class Finder:
                         print(f"searching {term}")
                     except Exception as e:
                         print(e)
-                        return valid_comments, total_comments
+                        return self.return_comments(valid_comments, total_comments)
                 
                 for comment in response["items"]:
                     comment_ID = comment['id']
@@ -72,7 +73,7 @@ class Finder:
                             valid_comments.append(comment_dict)
 
                     if len(valid_comments) >= int(maxresults):
-                        return valid_comments, total_comments
+                        return self.return_comments(valid_comments, total_comments)
 
     def video_id(self, url):
         # Examples:
@@ -92,3 +93,20 @@ class Finder:
                 return query.path.split('/')[2]
         # fail?
         return None
+    
+    def return_comments(self, comments, total):
+        if self.filter_comments == "Most Likes":
+            comments = sorted(comments, key=lambda k: int(k["likes"]))[::-1]
+        elif self.filter_comments == "Least Likes":
+            comments = sorted(comments, key=lambda k: int(k["likes"]))
+        elif self.filter_comments == "Longest Comment":
+            comments = sorted(comments, key=lambda k: len(k["text"]))[::-1]
+        elif self.filter_comments == "Shortest Comment":
+            comments = sorted(comments, key=lambda k: len(k["text"]))
+        elif self.filter_comments == "Alphabetical Order":
+            comments = sorted(comments, key=lambda k: k["text"])
+
+        
+        
+        return comments, total
+
